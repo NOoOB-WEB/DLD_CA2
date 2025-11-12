@@ -10,8 +10,8 @@ wire cout;
 RCA instant(.cin(cin),.cout(cout),.A(A),.B(B),.s(s));
 
 initial begin
-    A = 4'sd0;
-    B = 4'sd0;
+    A = 4'sd2;
+    B = 4'sd3;
     cin = 1'b0;
 
     #50;

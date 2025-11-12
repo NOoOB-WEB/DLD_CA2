@@ -12,7 +12,9 @@ module CLA(input [3:0]A,B,input cin,output cout,c3,output [3:0]s);
 
     wire [3:0]c2;
 
-    wire[7:0]c3;
+    wire [7:0]c3;
+
+    wire [15:0]c4;
 
     // g outs
     and #(2) g0(go[0],A[0],B[0]);
@@ -34,11 +36,41 @@ module CLA(input [3:0]A,B,input cin,output cout,c3,output [3:0]s);
     and #(2) c2_first(c2[0],po[0],cin);
     and #(2) c2_second(c2[1],c2[0],po[1]);
     and #(2) c2_third(c2[2],go[0],po[1]);
-    or #(2) c2_second(c2[1],c2[0],po[0]);
-    
+    or #(2) c2_fourth(c2[3],c2[2],c2[1]);
+    or #(2) c2_fifth(c[2],c2[3],go[1]);
+
     //c3
+    and #(2) c3_first(c3[0],po[0],cin);
+    and #(2) c3_second(c3[1],po[2],po[1]);
+    and #(2) c3_third(c3[2],c3[0],c3[1]);
+
+    and #(2) c3_forth(c3[3],po[0],po[1]);
+    and #(2) c3_fifth(c3[4],po[2],c3[3]);
+
+    and #(2) c3_sixth(c3[5],po[2],go[1]);
+
+    or #(2) c3_seventh(c3[6],go[2],c3[5]);
+    or #(2) c3_eighth(c3[7],c3[4],c3[2]);
+    or #(2) c3_ninth(c[3],c3[7],c3[6]);
 
     //c4
+    and #(2) c4_first();
+    and #(2) c4_first();
+    and #(2) c4_first();
+    and #(2) c4_first();
+    and #(2) c4_first();
+
+    and #(2) c4_first();
+    and #(2) c4_first();
+    and #(2) c4_first();
+
+    and #(2) c4_first();
+    and #(2) c4_first();
+    and #(2) c4_first();
+
+    and #(2) c4_first();
+    and #(2) c4_first();
+
 
     //sums
     xor #(3) first_xor_s0(t[0],A[0],B[0]);
