@@ -36,9 +36,9 @@ initial begin
     op = 2'b10;
     
     #200
-    A = 4'sd5;
+    A = 4'sd3;
     B = 4'sd3;
-    op = 2'b10;
+    op = 2'b11;
 
 
 end

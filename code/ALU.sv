@@ -61,19 +61,19 @@ module ALU (input [3:0]A,B,input [1:0]op,output overflow,zero,output [3:0]result
     wire [7:0]first_layer_wire;
     wire [3:0]second_layer_wire;
 
-    Multiplexer mux0(s[0],s[0],op[1],first_layer_wire[0]);
-    Multiplexer mux1(s[1],s[1],op[1],first_layer_wire[1]);
-    Multiplexer mux2(s[2],s[2],op[1],first_layer_wire[2]);
-    Multiplexer mux3(s[3],s[3],op[1],first_layer_wire[3]);
+    Multiplexer mux0(s[0],s[0],op[0],first_layer_wire[0]);
+    Multiplexer mux1(s[1],s[1],op[0],first_layer_wire[1]);
+    Multiplexer mux2(s[2],s[2],op[0],first_layer_wire[2]);
+    Multiplexer mux3(s[3],s[3],op[0],first_layer_wire[3]);
 
-    Multiplexer mux4(as[0],s[0],op[1],first_layer_wire[4]);
-    Multiplexer mux5(as[1],s[1],op[1],first_layer_wire[5]);
-    Multiplexer mux6(as[2],s[2],op[1],first_layer_wire[6]);
-    Multiplexer mux7(as[3],s[3],op[1],first_layer_wire[7]);
+    Multiplexer mux4(as[0],s[1],op[0],first_layer_wire[4]);
+    Multiplexer mux5(as[1],s[2],op[0],first_layer_wire[5]);
+    Multiplexer mux6(as[2],s[3],op[0],first_layer_wire[6]);
+    Multiplexer mux7(as[3],s[3],op[0],first_layer_wire[7]);
 
-    Multiplexer mux8(first_layer_wire[0],first_layer_wire[4],op[0],result[0]);
-    Multiplexer mux9(first_layer_wire[1],first_layer_wire[5],op[0],result[1]);
-    Multiplexer mux10(first_layer_wire[2],first_layer_wire[6],op[0],result[2]);
-    Multiplexer mux11(first_layer_wire[3],first_layer_wire[7],op[0],result[3]);
+    Multiplexer mux8(first_layer_wire[0],first_layer_wire[4],op[1],result[0]);
+    Multiplexer mux9(first_layer_wire[1],first_layer_wire[5],op[1],result[1]);
+    Multiplexer mux10(first_layer_wire[2],first_layer_wire[6],op[1],result[2]);
+    Multiplexer mux11(first_layer_wire[3],first_layer_wire[7],op[1],result[3]);
 
 endmodule
