@@ -44,7 +44,7 @@ module CLA(input [3:0]A,B,input cin,output cout,cout3,output [3:0]s);
     and #(2) c3_second(c3[1],po[2],po[1]);
     and #(2) c3_third(c3[2],c3[0],c3[1]);
 
-    and #(2) c3_forth(c3[3],po[0],po[1]);
+    and #(2) c3_forth(c3[3],po[0],go[1]);
     and #(2) c3_fifth(c3[4],po[2],c3[3]);
 
     and #(2) c3_sixth(c3[5],po[2],go[1]);
@@ -54,11 +54,25 @@ module CLA(input [3:0]A,B,input cin,output cout,cout3,output [3:0]s);
     or #(2) c3_ninth(cout3,c3[7],c3[6]);
 
     //c4
-    and #(6) c4_first(c4[0],cin,po[0],po[1],po[2],po[3]);
-    and #(4) c4_second(c4[1],go[0],po[1],po[2],po[3]);
-    and #(2) c4_third(c4[2],go[0],po[1],po[2],po[3]);
-    and #(2) c4_forth(c4[3],po[3],go[2]);
-    or #(6) c4_or(cout,c4[0],c4[1],c4[2],c4[3],go[3]);
+    and #(2) c4_first(c4[0],po[0],cin);
+    and #(2) c4_second(c4[1],po[2],po[1]);
+    and #(2) c4_third(c4[2],c4[0],c4[1]);
+    and #(2) c4_forth(c4[3],po[3],c4[2]);
+
+    and #(2) c4_fif(c4[4],go[0],po[1]);
+    and #(2) c4_fifth(c4[5],po[2],po[3]);
+    and #(2) c4_sixth(c4[6],c4[5],c4[4]);
+
+    
+    and #(2) c4_seventh(c4[7],go[1],po[2]);
+    and #(2) c4_eighth(c4[8],c4[7],po[3]);
+    
+    and #(2) c4_ninth(c4[9],po[3],go[2]);
+
+    or #(2) c4_tenth(c4[10],c4[3],c4[6]);
+    or #(2) c4_eleventh(c4[11],c4[8],c4[9]);
+    or #(2) c4_twevelth(c4[12],c4[10],c4[11]);
+    or #(2) c4_thirtinth(cout,c4[12],go[3]);
 
     //sums
     xor #(3) first_xor_s0(t[0],A[0],B[0]);
